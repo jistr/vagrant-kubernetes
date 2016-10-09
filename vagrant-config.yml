@@ -13,5 +13,5 @@ master:
   ip_address_start: 10
 
 node:
-  count: 1
+  count: 2
   ip_address_start: 20
