@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -eu
 
 # generate inventory
 echo '[masters]' > ansible-inventory
@@ -10,4 +10,4 @@ vagrant status | grep '(libvirt)' | grep node | awk '{ print $1 }' >> ansible-in
 
 vagrant ssh-config > ansible-ssh-config
 
-ansible-playbook -i ansible-inventory playbooks/provision.yml
+ansible-playbook -i ansible-inventory "$@" playbooks/provision.yml

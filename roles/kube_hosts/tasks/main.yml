@@ -1,0 +1,6 @@
+- name: add hosts entries
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^{{ hostvars[item]['ansible_' + kube_hosts_nic]['ipv4']['address'] }}"
+    line: "{{ hostvars[item]['ansible_' + kube_hosts_nic]['ipv4']['address'] }} {{ item }}"
+  with_items: "{{ ansible_play_hosts }}"

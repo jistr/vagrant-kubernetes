@@ -1,1 +1,3 @@
 - hosts: masters nodes
+  roles:
+    - kube_hosts
