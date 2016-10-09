@@ -1,0 +1,17 @@
+libvirt:
+  box: fedora24
+  default_prefix: kube
+  private_net_name: kube
+  storage_pool_name: default
+  suspend_mode: managedsave
+
+common:
+  ip_address_net_24: 192.168.10
+
+master:
+  count: 1
+  ip_address_start: 10
+
+node:
+  count: 1
+  ip_address_start: 20
