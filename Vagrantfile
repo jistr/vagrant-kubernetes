@@ -20,7 +20,7 @@ def master_vm(master_num, config)
       libvirt.cpus = 2
     end
 
-    # vm_config.vm.provision "shell", inline: "/vagrant-sync/preconfigure.sh"
+    vm_config.vm.provision "shell", inline: "/vagrant-sync/preconfigure.sh"
   end
 end
 
@@ -37,7 +37,7 @@ def node_vm(node_num, config)
       libvirt.cpus = 2
     end
 
-    # vm_config.vm.provision "shell", inline: "/vagrant-sync/preconfigure.sh"
+    vm_config.vm.provision "shell", inline: "/vagrant-sync/preconfigure.sh"
   end
 end
 
@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.username = 'root'
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  # config.vm.synced_folder './vagrant-sync', '/vagrant-sync', type: 'rsync'
+  config.vm.synced_folder './vagrant-sync', '/vagrant-sync', type: 'rsync'
 
   config.vm.provider :libvirt do |libvirt, override|
     libvirt.driver = 'kvm'
