@@ -1,0 +1,8 @@
+- name: install kubernetes master packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - etcd
+    - iptables
+    - kubernetes-master

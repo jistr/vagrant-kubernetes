@@ -1,3 +1,13 @@
 - hosts: masters nodes
   roles:
     - kube_hosts
+
+- hosts: masters
+  roles:
+    - kube_master_prereq
+    - kube_common
+
+- hosts: nodes
+  roles:
+    - kube_node_prereq
+    - kube_common

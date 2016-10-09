@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf -y install python libselinux-python
+dnf -y install libselinux-python python python2-dnf
