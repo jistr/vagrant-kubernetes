@@ -1,0 +1,14 @@
+- name: kubelet service options
+  template:
+    src: kubelet.j2
+    dest: /etc/kubernetes/kubelet
+
+- name: start kube node services
+  service:
+    name: "{{ item }}"
+    state: running
+    enabled: true
+  with_items:
+    - kube-proxy
+    - kubelet
+    - docker

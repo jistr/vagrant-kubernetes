@@ -1,0 +1,16 @@
+- name: create flannel etcd config
+  template:
+    src: kube-flannel.json.j2
+    dest: /root/kube-flannel.json
+
+- name: check if flannel etcd config exists
+  shell:
+    etcdctl get coreos.com/network/config
+  failed_when: false
+  changed_when: false
+  register: flannel_config_exists
+
+- name: upload flannel etcd config
+  shell: |
+    etcdctl set coreos.com/network/config < /root/kube-flannel.json
+  when: flannel_config_exists.rc != 0

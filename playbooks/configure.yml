@@ -7,10 +7,13 @@
     - kube_master_prereq
     - kube_common
     - etcd
-    - flannel
+    - role: flannel
+      flannel_etcd_config: true
     - kube_master
 
 - hosts: nodes
   roles:
     - kube_node_prereq
     - kube_common
+    - flannel
+    - kube_node
