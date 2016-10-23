@@ -1,4 +1,5 @@
+*.retry
+
 /ansible-ssh-config
 /ansible-inventory
-/playbooks/*.retry
 /.vagrant

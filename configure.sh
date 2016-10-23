@@ -10,4 +10,6 @@ vagrant status | grep '(libvirt)' | grep node | awk '{ print $1 }' >> ansible-in
 
 vagrant ssh-config > ansible-ssh-config
 
-ansible-playbook -i ansible-inventory "$@" playbooks/configure.yml
+# move to playbooks/configure.yml and remove the symlink when
+# https://github.com/ansible/ansible/issues/17869 is fixed
+ansible-playbook -i ansible-inventory "$@" configure.yml
