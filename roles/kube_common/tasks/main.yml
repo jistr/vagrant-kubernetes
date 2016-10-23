@@ -2,14 +2,3 @@
   template:
     src: config.j2
     dest: /etc/kubernetes/config
-
-# It seems the cloud image comes without these preinstalled/preenabled.
-#
-# - name: disable and stop firewall services
-#   service:
-#     name: "{{ item }}"
-#     enabled: no
-#     state: stopped
-#   with_items:
-#     - iptables-services
-#     - firewalld
