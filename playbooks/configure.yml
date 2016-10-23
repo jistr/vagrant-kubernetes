@@ -7,6 +7,7 @@
     - kube_master_prereq
     - kube_common
     - etcd
+    - flannel
     - kube_master
 
 - hosts: nodes
