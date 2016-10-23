@@ -6,6 +6,8 @@
   roles:
     - kube_master_prereq
     - kube_common
+    - etcd
+    - kube_master
 
 - hosts: nodes
   roles:

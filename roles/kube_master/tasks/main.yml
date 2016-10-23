@@ -1,0 +1,14 @@
+- name: apiserver conf file
+  template:
+    src: apiserver.j2
+    dest: /etc/kubernetes/apiserver
+
+- name: master services
+  service:
+    name: "{{ item }}"
+    state: running
+    enabled: true
+  with_items:
+    - kube-controller-manager
+    - kube-scheduler
+    - kube-apiserver
