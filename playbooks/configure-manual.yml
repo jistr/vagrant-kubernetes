@@ -1,3 +1,4 @@
+# Deprecated playbook for now, used to run with Fedora packages.
 - hosts: masters nodes
   roles:
     - kube_hosts

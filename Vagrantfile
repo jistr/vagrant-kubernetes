@@ -45,7 +45,8 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.ssh.username = 'root'
+  config.ssh.insert_key = true
+  config.ssh.password = 'vagrant'
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder './vagrant-sync', '/vagrant-sync', type: 'rsync'
