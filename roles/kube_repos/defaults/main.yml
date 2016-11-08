@@ -1,0 +1,7 @@
+kube_repo_baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64-unstable
+# the gpgcheck seems to only work well with stable repos
+kube_repo_gpgcheck: 0
+kube_repo_repo_gpgcheck: 0
+kube_repo_gpgkeys:
+  - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+  - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg

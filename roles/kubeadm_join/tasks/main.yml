@@ -1,0 +1,12 @@
+- name: k8s_containers_running
+  shell: docker ps | grep k8s_
+  changed_when: false
+  failed_when: false
+  register: k8s_containers_running
+
+- name: run kubeadm join
+  shell: |
+    kubeadm join \
+        --token "$(cat /root/kubeadm-token)" \
+        {{ hostvars['master0']['ansible_' + kube_hosts_nic]['ipv4']['address'] }}
+  when: k8s_containers_running.rc != 0

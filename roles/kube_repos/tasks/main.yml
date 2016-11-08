@@ -1,0 +1,25 @@
+- name: create kubernetes yum repo file
+  copy:
+    content: |
+      [kubernetes]
+      name=Kubernetes
+      baseurl={{ kube_repo_baseurl }}
+      enabled=1
+      gpgcheck={{ kube_repo_gpgcheck }}
+      repo_gpgcheck={{ kube_repo_repo_gpgcheck }}
+      gpgkey={{ kube_repo_gpgkeys | join(" ") }}
+    dest: /etc/yum.repos.d/kube_repo.repo
+
+- name: get yum GPG keys
+  get_url:
+    url: "{{ item }}"
+    dest: /root/{{ item | basename }}
+  with_items: "{{ kube_repo_gpgkeys }}"
+
+- name: import yum GPG keys
+  shell: rpm --import /root/{{ item | basename }}
+  with_items: "{{ kube_repo_gpgkeys }}"
+  changed_when: false
+
+- name: yum clean all
+  shell: yum clean all

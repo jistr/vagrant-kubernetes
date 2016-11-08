@@ -1,0 +1,22 @@
+- name: make sure kubelet and docker are running
+  service:
+    name: "{{ item }}"
+    state: running
+    enabled: yes
+  with_items:
+    - kubelet
+    - docker
+
+- name: k8s_containers_running
+  shell: docker ps | grep k8s_
+  changed_when: false
+  failed_when: false
+  register: k8s_containers_running
+
+- name: run kubeadm init
+  shell: |
+    kubeadm init \
+        --api-advertise-addresses={{ hostvars['master0']['ansible_' + kube_hosts_nic]['ipv4']['address'] }} \
+        --token "$(cat /root/kubeadm-token)" \
+        --service-cidr 192.168.10.128/25
+  when: k8s_containers_running.rc != 0

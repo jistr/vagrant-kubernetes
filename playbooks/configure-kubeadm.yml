@@ -1,0 +1,13 @@
+- hosts: masters nodes
+  roles:
+    - kube_hosts
+    - kube_repos
+    - kubeadm
+
+- hosts: masters
+  roles:
+    - kubeadm_init
+
+- hosts: nodes
+  roles:
+    - kubeadm_join

@@ -12,4 +12,4 @@ vagrant ssh-config | sed -e 's/User vagrant/User root/' > ansible-ssh-config
 
 # move to playbooks/configure.yml and remove the symlink when
 # https://github.com/ansible/ansible/issues/17869 is fixed
-ansible-playbook -i ansible-inventory "$@" configure.yml
+ansible-playbook -i ansible-inventory "$@" configure-kubeadm.yml
