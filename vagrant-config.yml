@@ -1,5 +1,5 @@
 libvirt:
-  box: centos7
+  box: fedora24
   default_prefix: kube
   private_net_name: kube
   storage_pool_name: default

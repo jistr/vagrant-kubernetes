@@ -1,5 +1,5 @@
 - name: install flannel
-  dnf:
+  package:
     name: flannel
     state: present
 
