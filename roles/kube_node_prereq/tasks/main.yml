@@ -1,7 +1,14 @@
-- name: install kubernetes node packages
+- name: install kubernetes node prereq packages
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - iptables
+
+- name: install kubernetes node packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
     - kubernetes-node
+  when: kube_install_source == 'packages'

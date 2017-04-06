@@ -1,8 +1,15 @@
-- name: install kubernetes master packages
+- name: install kubernetes prereq packages
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - etcd
     - iptables
+
+- name: install kubernetes master packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
     - kubernetes-master
+  when: kube_install_source == 'packages'
