@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if type dnf; then
+if type dnf &> /dev/null; then
     PACKAGE_MANAGER=dnf
     PACKAGES="libselinux-python python python2-dnf"
 else

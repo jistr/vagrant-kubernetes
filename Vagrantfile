@@ -46,11 +46,7 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Fedora
-  config.ssh.username = 'root'
-
-  # CentOS
-  # config.ssh.insert_key = true
-  # config.ssh.password = 'vagrant'
+  # config.ssh.username = 'root'
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder './vagrant-sync', '/vagrant-sync', type: 'rsync'
@@ -64,6 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # libvirt.uri = CFG["libvirt"]["uri"]
 
     override.vm.box = CFG["libvirt"]["box"]
+    override.vm.box_url = CFG["libvirt"]["box_url"]
     override.vm.provider :libvirt do |vm_libvirt|
       libvirt.suspend_mode = CFG["libvirt"]["suspend_mode"]
     end

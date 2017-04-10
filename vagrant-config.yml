@@ -1,5 +1,6 @@
 libvirt:
-  box: fedora24
+  box: CentOS-7
+  box_url: https://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7.LibVirt.box
   default_prefix: kube
   private_net_name: kube
   storage_pool_name: default
