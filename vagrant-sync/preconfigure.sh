@@ -15,3 +15,7 @@ if ! sudo test -e /root/.ssh/authorized_keys; then
     sudo cp /home/vagrant/.ssh/authorized_keys /root/.ssh/authorized_keys
     sudo chmod -R go-rwx /root/.ssh
 fi
+
+sudo yum install -y docker python-six
+sudo systemctl start docker
+sudo systemctl enable docker
